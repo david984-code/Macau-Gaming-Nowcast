@@ -30,13 +30,10 @@ _MONTHS = {
 }
 
 
-@network_retry
-def _fetch_year(year: int) -> dict[pd.Timestamp, float]:
-    r = requests.get(_URL.format(year=year), headers=_HEADERS, timeout=30)
-    if r.status_code != 200:
-        return {}
+def _parse(xml: bytes, year: int) -> dict[pd.Timestamp, float]:
+    """Pure parse of a DICJ report XML -> {month-start: current-year GGR}."""
     out: dict[pd.Timestamp, float] = {}
-    for rec in ET.fromstring(r.content).iter("RECORD"):
+    for rec in ET.fromstring(xml).iter("RECORD"):
         d = [x.text for x in rec.findall("DATA")]
         if len(d) >= 2 and d[0] in _MONTHS and d[1]:
             try:
@@ -44,6 +41,12 @@ def _fetch_year(year: int) -> dict[pd.Timestamp, float]:
             except ValueError:
                 continue
     return out
+
+
+@network_retry
+def _fetch_year(year: int) -> dict[pd.Timestamp, float]:
+    r = requests.get(_URL.format(year=year), headers=_HEADERS, timeout=30)
+    return _parse(r.content, year) if r.status_code == 200 else {}
 
 
 def fetch(force: bool = False) -> pd.Series:

@@ -73,3 +73,6 @@ A free-data **consumer subsector reader** built to a consistent honest-numbers b
   — TSA throughput → carrier RPM growth.
 - [Hospitality-Alt-Data-Dashboard](https://github.com/david984-code/hospitality-alt-data-dashboard)
   — TSA / BLS / Trends → hotel-franchisor demand.
+- **→ [Consumer-LS-Book](https://github.com/david984-code/Consumer-LS-Book)** — the
+  market-neutral long/short book these readers feed (demand + valuation sizing,
+  concentration caps, beta hedge, honest walk-forward test).

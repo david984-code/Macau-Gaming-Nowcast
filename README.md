@@ -1,5 +1,7 @@
 # Macau Gaming Nowcast (DICJ GGR → casino operators)
 
+[![CI](https://github.com/david984-code/Macau-Gaming-Nowcast/actions/workflows/ci.yml/badge.svg)](https://github.com/david984-code/Macau-Gaming-Nowcast/actions/workflows/ci.yml)
+
 A consumer-sector **subsector reader** for the Consumer L/S book: nowcast the
 US-listed casino operators' reported revenue from **Macau monthly Gross Gaming
 Revenue (GGR)** — published by the Macau regulator (DICJ), the single number the

@@ -1,0 +1,15 @@
+.env
+.venv/
+__pycache__/
+*.pyc
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+
+# Generated outputs + reproducible caches
+outputs/
+data/macau_ggr.csv
+data/operator_revenue.csv
+*.parquet
+*.pkl
+*.db
